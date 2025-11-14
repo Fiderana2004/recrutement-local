@@ -1,0 +1,117 @@
+/* ==========================================================================
+   Styles pour le tableau de bord du candidat (dashboard_candidat_style.css)
+   ========================================================================== */
+
+:root {
+    --primary-color: #0d6efd;
+    --success-color: #198754;
+    --danger-color: #dc3545;
+    --secondary-text-color: #6c757d;
+    --card-shadow: 0 4px 8px rgba(0, 0, 0, 0.05); /* Ombre plus subtile */
+}
+
+/* Conteneur principal */
+.dashboard-container {
+    padding: 20px; /* Réduction du padding */
+}
+
+/* Titre de bienvenue */
+.welcome-title {
+    font-weight: 700;
+    color: #343a40;
+    font-size: 1.5rem; /* Taille de police plus petite */
+    margin-bottom: 1.5rem !important; /* Marge réduite */
+}
+
+/* Photo de profil */
+.profile-pic-large {
+    width: 60px; /* Taille réduite */
+    height: 60px; /* Taille réduite */
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid var(--primary-color); /* Bordure plus fine */
+}
+
+/* Style pour les cartes de statistiques */
+.stat-card {
+    border-radius: 8px; /* Rayon de bordure plus petit */
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.stat-card .card-body {
+    padding: 1rem; /* Réduction du padding interne */
+}
+
+.stat-card:hover {
+    transform: translateY(-3px); /* Effet de survol plus subtil */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.08) !important; /* Ombre plus subtile */
+}
+
+.stat-icon {
+    font-size: 2.5rem; /* Taille de l'icône réduite */
+    opacity: 0.3;
+}
+
+.stat-text {
+    font-size: 0.9rem; /* Taille de police réduite */
+    margin-bottom: 0.25rem;
+}
+
+.stat-value {
+    font-size: 1.5rem; /* Taille de police réduite */
+    font-weight: 600;
+}
+
+
+/* Style pour les cartes de section */
+.card {
+    border-radius: 8px; /* Rayon de bordure plus petit */
+    box-shadow: var(--card-shadow);
+    transition: box-shadow 0.2s ease;
+}
+
+.card-header {
+    font-size: 1rem; /* Taille de police plus petite */
+    font-weight: 600;
+    padding: 0.75rem 1.25rem; /* Réduction du padding */
+}
+
+/* Style pour les tableaux */
+.table-borderless thead th {
+    border-bottom: 1px solid var(--primary-color); /* Bordure plus fine */
+    font-size: 0.9rem; /* Taille de police plus petite */
+    padding: 0.75rem; /* Réduction du padding */
+}
+
+.table-borderless tbody td {
+    border-top: none;
+    font-size: 0.9rem; /* Taille de police plus petite */
+    padding: 0.75rem; /* Réduction du padding */
+}
+
+.table-borderless tbody tr:hover {
+    background-color: #f1f3f5;
+}
+
+/* Styles pour les petits écrans (responsive) */
+@media (max-width: 768px) {
+    .dashboard-container {
+        padding: 15px;
+    }
+    .welcome-title {
+        font-size: 1.2rem;
+    }
+    .profile-pic-large {
+        width: 50px;
+        height: 50px;
+    }
+    .stat-icon {
+        font-size: 2rem;
+    }
+    .stat-value {
+        font-size: 1.2rem;
+    }
+    .card-header {
+        font-size: 0.9rem;
+    }
+}

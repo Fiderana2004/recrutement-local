@@ -1,0 +1,191 @@
+/* ==========================================================================
+   Styles pour la page "Mes Candidatures" sous forme de tableau
+   ========================================================================== */
+
+:root {
+    --page-bg: #f8f9fa;
+    --card-bg: #ffffff;
+    --text-primary: #343a40;
+    --text-secondary: #6c757d;
+    --accent-color: #0d6efd;
+    --border-color: #dee2e6;
+    --card-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+
+    /* Couleurs des badges de statut */
+    --status-en-attente-bg: #fff3cd;
+    --status-en-attente-text: #664d03;
+    --status-accepté-bg: #d1e7dd;
+    --status-accepté-text: #0f5132;
+    --status-refusé-bg: #f8d7da;
+    --status-refusé-text: #842029;
+}
+
+body {
+    background-color: var(--page-bg);
+}
+
+.my-candidatures-container {
+    padding: 30px;
+}
+
+.page-title {
+    color: var(--text-primary);
+    font-size: 2rem;
+    font-weight: 700;
+}
+
+.my-candidatures-card {
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    box-shadow: var(--card-shadow);
+}
+
+.my-candidatures-card .card-body {
+    padding: 0;
+}
+
+/* Style du tableau */
+.my-candidatures-table {
+    margin-bottom: 0;
+    border-collapse: separate;
+    border-spacing: 0;
+    font-size: 0.95rem;
+}
+
+.my-candidatures-table thead th {
+    background-color: #e9ecef; /* Fond plus clair que le tableau par défaut */
+    border-bottom: 2px solid var(--accent-color);
+    color: var(--text-primary);
+    font-weight: 600;
+    padding: 15px 20px;
+}
+
+.my-candidatures-table tbody tr {
+    transition: background-color 0.2s ease;
+}
+
+.my-candidatures-table tbody tr:hover {
+    background-color: #f0f2f5;
+}
+
+.my-candidatures-table tbody td {
+    padding: 15px 20px;
+    vertical-align: middle;
+    border-top: 1px solid var(--border-color);
+}
+
+/* Style des liens de documents */
+.document-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.document-link-table {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: 5px 10px;
+    background-color: #e9ecef;
+    color: var(--text-secondary);
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 0.85rem;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.document-link-table:hover {
+    background-color: #ced4da;
+    color: var(--text-primary);
+}
+
+/* Style des badges de statut */
+.status-badge {
+    display: inline-block;
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-transform: capitalize;
+}
+
+.status-en-attente {
+    background-color: var(--status-en-attente-bg);
+    color: var(--status-en-attente-text);
+}
+.status-accepté {
+    background-color: var(--status-accepté-bg);
+    color: var(--status-accepté-text);
+}
+.status-refusé {
+    background-color: var(--status-refusé-bg);
+    color: var(--status-refusé-text);
+}
+
+/* Message si aucune candidature */
+.no-candidatures-message {
+    text-align: center;
+    padding: 50px 20px;
+    color: var(--text-secondary);
+}
+
+.no-candidatures-message .btn {
+    font-weight: 600;
+    padding: 10px 20px;
+}
+
+/* Responsive tableau Mes Candidatures pour petits écrans */
+@media (max-width: 768px) {
+  /* Cacher l'entête du tableau */
+  .my-candidatures-table thead {
+    display: none;
+  }
+
+  /* Chaque ligne devient un "bloc" */
+  .my-candidatures-table tbody tr {
+    display: block;
+    margin-bottom: 1.5rem;
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    padding: 15px;
+    background-color: var(--card-bg);
+    box-shadow: var(--card-shadow);
+  }
+
+  /* Chaque cellule devient un bloc avec label */
+  .my-candidatures-table tbody td {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 10px;
+    border: none;
+    border-top: 1px solid var(--border-color);
+    font-size: 0.9rem;
+  }
+
+  /* Ajout du label via pseudo-element CSS */
+  .my-candidatures-table tbody td:nth-of-type(1)::before { content: "Offre Postulée"; font-weight: 700; color: var(--text-primary); }
+  .my-candidatures-table tbody td:nth-of-type(2)::before { content: "Nom du Candidat"; font-weight: 700; color: var(--text-primary); }
+  .my-candidatures-table tbody td:nth-of-type(3)::before { content: "Documents"; font-weight: 700; color: var(--text-primary); }
+  .my-candidatures-table tbody td:nth-of-type(4)::before { content: "Statut"; font-weight: 700; color: var(--text-primary); }
+  .my-candidatures-table tbody td:nth-of-type(5)::before { content: "Action"; font-weight: 700; color: var(--text-primary); }
+
+  /* Mettre les labels en début de chaque cellule, avant le contenu */
+  .my-candidatures-table tbody td::before {
+    flex: 1 1 40%;
+    display: inline-block;
+  }
+
+  /* Ajuster les liens documents sur petits écrans */
+  .document-links {
+    flex-direction: column;
+  }
+
+  /* Bouton Supprimer plus visible en largeur */
+  .my-candidatures-table tbody td:last-child {
+    justify-content: flex-start;
+  }
+
+  .btn-danger {
+    width: 100%;
+  }
+}

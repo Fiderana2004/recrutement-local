@@ -1,0 +1,171 @@
+/* ==========================================================================
+   Styles pour la page "Notifications" (notifications.css)
+   ========================================================================== */
+
+:root {
+    --page-bg: #f8f9fa;
+    --card-bg: #ffffff;
+    --text-primary: #343a40;
+    --border-color: #dee2e6;
+    --card-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+
+    --notif-unread-bg: #e9f5ff; /* Fond bleu clair pour les notifications non lues */
+    --notif-unread-text: #0d47a1; /* Texte bleu foncé */
+    --notif-read-bg: #f0f2f5;    /* Fond gris clair pour les notifications lues */
+    --notif-read-text: #6c757d;  /* Texte gris foncé */
+
+    --badge-read-bg: #6c757d;    /* Gris pour le badge Lu */
+    --badge-unread-bg: #28a745;  /* Vert pour le badge Non lu */
+}
+
+body {
+    background-color: var(--page-bg);
+}
+
+.notifications-container {
+    padding: 30px;
+}
+
+.page-title {
+    color: var(--text-primary);
+    font-size: 2rem;
+    font-weight: 700;
+}
+
+.notifications-card {
+    border: none;
+    border-radius: 10px;
+    box-shadow: var(--card-shadow);
+}
+
+.notifications-card .card-body {
+    padding: 0;
+}
+
+/* Style du tableau */
+.notifications-table {
+    margin-bottom: 0;
+    border-collapse: separate;
+    border-spacing: 0;
+    font-size: 0.95rem;
+}
+
+.notifications-table thead th {
+    background-color: #e9ecef;
+    border-bottom: 2px solid #0d6efd;
+    color: var(--text-primary);
+    font-weight: 600;
+    padding: 15px 20px;
+}
+
+.notifications-table tbody tr {
+    transition: background-color 0.2s ease;
+}
+
+.notifications-table tbody td {
+    padding: 15px 20px;
+    vertical-align: middle;
+    border-top: 1px solid var(--border-color);
+}
+
+.notifications-table tbody tr:hover {
+    background-color: #e2e6ea;
+}
+
+/* Styles spécifiques pour les lignes non lues */
+.notif-unread {
+    background-color: var(--notif-unread-bg);
+    color: var(--notif-unread-text);
+    font-weight: 500;
+}
+
+/* Styles pour les lignes lues */
+.notif-read {
+    background-color: var(--notif-read-bg);
+    color: var(--notif-read-text);
+}
+
+/* Badges de statut */
+.notif-badge {
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+/* Message si aucune notification */
+.no-notifications-message {
+    text-align: center;
+    padding: 50px 20px;
+    color: var(--text-secondary);
+}
+/* Responsive tableau Notifications pour petits écrans */
+@media (max-width: 768px) {
+  /* Cacher l'entête du tableau */
+  .notifications-table thead {
+    display: none;
+  }
+
+  /* Chaque ligne devient un bloc */
+  .notifications-table tbody tr {
+    display: block;
+    margin-bottom: 1rem;
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    padding: 15px 20px;
+    background-color: var(--card-bg);
+    box-shadow: var(--card-shadow);
+  }
+
+  /* Chaque cellule devient un flex container avec label avant le contenu */
+  .notifications-table tbody td {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 0;
+    border: none;
+    border-top: 1px solid var(--border-color);
+    font-size: 0.9rem;
+  }
+
+  /* Labels générés via pseudo-elements pour chaque colonne */
+  .notifications-table tbody td:nth-of-type(1)::before { content: "Message"; font-weight: 700; color: var(--text-primary); flex: 1 1 40%; }
+  .notifications-table tbody td:nth-of-type(2)::before { content: "Date"; font-weight: 700; color: var(--text-primary); flex: 1 1 25%; }
+  .notifications-table tbody td:nth-of-type(3)::before { content: "Statut"; font-weight: 700; color: var(--text-primary); flex: 1 1 20%; }
+  .notifications-table tbody td:nth-of-type(4)::before { content: "Action"; font-weight: 700; color: var(--text-primary); flex: 1 1 15%; }
+
+  /* Espace entre label et contenu */
+  .notifications-table tbody td::before {
+    display: inline-block;
+  }
+
+  /* Responsive header avec titre + boutons */
+@media (max-width: 576px) {
+  .d-flex.justify-content-between.align-items-center.mb-4 {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .d-flex.justify-content-between.align-items-center.mb-4 > div {
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+
+  .d-flex.justify-content-between.align-items-center.mb-4 > h1.page-title {
+    font-size: 1.5rem;
+    margin-bottom: 0;
+  }
+
+  /* Pour que les boutons prennent moins de place sur petit écran */
+  .d-flex.justify-content-between.align-items-center.mb-4 a.btn {
+    flex: 1 1 auto;
+    white-space: nowrap;
+    font-size: 0.85rem;
+    padding: 0.35rem 0.6rem;
+  }
+}
+
+}

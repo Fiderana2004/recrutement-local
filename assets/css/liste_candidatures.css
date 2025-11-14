@@ -1,0 +1,378 @@
+/* ==========================================================================
+   Styles spécifiques à la liste des candidatures (liste_candidatures.css)
+   ========================================================================== */
+
+/* Variables de couleurs */
+:root {
+    --candidatures-bg-page: #f9fafb; /* Fond de la page */
+    --candidatures-card-bg: #ffffff; /* Fond des blocs de candidatures */
+    --candidatures-border-color: #e0e6ed; /* Bordure légère */
+    --candidatures-shadow-light: 0 4px 12px rgba(0, 0, 0, 0.05); /* Ombre légère */
+    --candidatures-text-dark: #333333; /* Texte principal foncé */
+    --candidatures-text-muted: #6b7280; /* Texte secondaire / désactivé */
+
+    /* Couleurs pour les statuts */
+    --status-pending-bg: #fffbe6; /* Jaune très clair */
+    --status-pending-text: #f59e0b; /* Jaune orangé */
+    --status-active-bg: #ecfdf5; /* Vert très clair */
+    --status-active-text: #10b981; /* Vert */
+    --status-blocked-bg: #fef2f2; /* Rouge très clair */
+    --status-blocked-text: #ef4444; /* Rouge */
+    --status-on-sale-bg: #e0f2fe; /* Bleu clair */
+    --status-on-sale-text: #3b82f6; /* Bleu */
+    --status-bouncing-bg: #f0f9ff; /* Bleu très clair */
+    --status-bouncing-text: #6366f1; /* Violet/bleu */
+
+    /* Adapter à vos statuts spécifiques */
+    --status-en-attente-bg: #fffbe6; /* Jaune clair */
+    --status-en-attente-text: #f59e0b;
+    --status-accepté-bg: #ecfdf5; /* Vert clair */
+    --status-accepté-text: #10b981;
+    --status-refusé-bg: #fef2f2; /* Rouge clair */
+    --status-refusé-text: #ef4444;
+
+    /* Boutons */
+    --btn-primary-bg: #6366f1; /* Bleu/Violet principal */
+    --btn-primary-hover-bg: #4f46e5;
+    --btn-outline-secondary-border: #d1d5db; /* Gris bordure */
+    --btn-outline-secondary-text: #6b7280;
+    --btn-outline-secondary-hover-bg: #f3f4f6;
+    --btn-outline-secondary-hover-border: #9ca3af;
+}
+
+/* Page conteneur */
+.candidatures-page {
+    background-color: var(--candidatures-bg-page);
+    padding: 30px;
+    min-height: calc(100vh - 60px); /* Ajuster si vous avez un header/footer fixe */
+    color: var(--candidatures-text-dark);
+}
+
+.page-title {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--candidatures-text-dark);
+}
+
+/* Barre de recherche, filtre, export */
+.candidatures-actions {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+
+.search-input {
+    width: 250px;
+    border-radius: 8px;
+    border: 1px solid var(--candidatures-border-color);
+    padding: 10px 15px;
+    font-size: 0.95rem;
+    background-color: var(--candidatures-card-bg); /* Correspond au fond des cartes */
+    box-shadow: var(--candidatures-shadow-light);
+}
+.search-input::placeholder {
+    color: var(--candidatures-text-muted);
+}
+.search-input:focus {
+    border-color: var(--btn-primary-bg);
+    box-shadow: 0 0 0 0.25rem rgba(99, 102, 241, 0.25); /* Couleur primaire avec opacité */
+    outline: none;
+}
+
+.filter-btn, .export-btn {
+    border-radius: 8px;
+    padding: 10px 15px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    transition: all 0.2s ease;
+}
+
+.filter-btn {
+    background-color: var(--candidatures-card-bg);
+    border: 1px solid var(--btn-outline-secondary-border);
+    color: var(--btn-outline-secondary-text);
+}
+.filter-btn:hover {
+    background-color: var(--btn-outline-secondary-hover-bg);
+    border-color: var(--btn-outline-secondary-hover-border);
+    color: var(--btn-outline-secondary-text); /* Reste de la même couleur */
+}
+
+.export-btn {
+    background-color: var(--btn-primary-bg);
+    border-color: var(--btn-primary-bg);
+    color: #ffffff;
+}
+.export-btn:hover {
+    background-color: var(--btn-primary-hover-bg);
+    border-color: var(--btn-primary-hover-bg);
+    color: #ffffff;
+}
+
+/* Conteneur de la liste des candidatures (remplace le tableau) */
+.candidatures-list-container {
+    background-color: var(--candidatures-card-bg);
+    border-radius: 12px;
+    box-shadow: var(--candidatures-shadow-light);
+    padding: 20px;
+}
+
+/* En-têtes de colonnes */
+.candidatures-header-row {
+    display: grid;
+    grid-template-columns: 2.5fr 1.5fr 1.5fr 1fr 1fr; /* Ajustez les proportions */
+    gap: 20px;
+    padding: 15px 20px;
+    border-bottom: 1px solid var(--candidatures-border-color);
+    margin-bottom: 10px;
+    font-weight: 600;
+    color: var(--candidatures-text-muted);
+    font-size: 0.9rem;
+    text-transform: uppercase;
+}
+.candidatures-header-row .header-cell {
+    display: flex;
+    align-items: center;
+}
+.candidatures-header-row .header-cell:hover {
+    cursor: pointer; /* Indique que les en-têtes pourraient être cliquables pour trier */
+    color: var(--candidatures-text-dark);
+}
+
+/* Style de chaque élément de candidature (une ligne) */
+.candidature-item {
+    display: grid;
+    grid-template-columns: 2.5fr 1.5fr 1.5fr 1fr 1fr; /* Doit correspondre au header */
+    gap: 20px;
+    align-items: center;
+    padding: 15px 20px;
+    margin-bottom: 10px; /* Espace entre chaque élément */
+    background-color: var(--candidatures-card-bg);
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    border: 1px solid transparent; /* Pour éviter un "saut" au hover */
+}
+
+.candidature-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+    border-color: var(--btn-primary-bg);
+}
+
+/* Informations du candidat (Photo + Nom + Email) */
+.candidate-info {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.candidate-photo-wrapper {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 2px solid var(--candidatures-border-color); /* Bordure autour de la photo */
+    flex-shrink: 0; /* Empêche la photo de rétrécir */
+}
+
+.candidate-photo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.candidate-details {
+    display: flex;
+    flex-direction: column;
+}
+
+.candidate-name {
+    font-weight: 600;
+    color: var(--candidatures-text-dark);
+    font-size: 1.05rem;
+}
+
+.candidate-email {
+    font-size: 0.85rem;
+    color: var(--candidatures-text-muted);
+}
+
+/* Titre de l'offre */
+.offer-title {
+    font-weight: 500;
+    color: var(--candidatures-text-dark);
+    font-size: 0.95rem;
+}
+
+/* Liens des documents (CV, Lettre) */
+.documents-links {
+    display: flex;
+    gap: 10px; /* Espace entre les liens */
+    flex-wrap: wrap; /* Permet aux liens de passer à la ligne si l'espace est limité */
+}
+
+.document-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    background-color: #f0f2f5; /* Fond léger pour le badge du document */
+    color: var(--candidatures-text-muted);
+    padding: 6px 10px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-size: 0.85rem;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.document-link i {
+    font-size: 1rem;
+}
+
+.document-link:hover {
+    background-color: #e0e2e5;
+    color: var(--candidatures-text-dark);
+}
+
+
+/* Badges de statut */
+.status-badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 6px 12px;
+    border-radius: 20px; /* Plus arrondi pour un look de "pilule" */
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-transform: capitalize; /* Première lettre en majuscule */
+}
+
+/* Couleurs spécifiques pour chaque statut (selon vos valeurs dans la BDD) */
+.status-en-attente {
+    background-color: var(--status-en-attente-bg);
+    color: var(--status-en-attente-text);
+}
+
+.status-accepté {
+    background-color: var(--status-accepté-bg);
+    color: var(--status-accepté-text);
+}
+
+.status-refusé {
+    background-color: var(--status-refusé-bg);
+    color: var(--status-refusé-text);
+}
+
+/* Selecteur de statut (Action) */
+.status-select {
+    width: 150px; /* Ajustez la largeur si nécessaire */
+    border-radius: 8px;
+    font-size: 0.9rem;
+    padding: 8px 10px;
+    border-color: var(--candidatures-border-color);
+    background-color: var(--candidatures-card-bg);
+    box-shadow: var(--candidatures-shadow-light);
+    color: var(--candidatures-text-dark);
+}
+.status-select:focus {
+    border-color: var(--btn-primary-bg);
+    box-shadow: 0 0 0 0.25rem rgba(99, 102, 241, 0.25);
+    outline: none;
+}
+
+/* Message si aucune candidature */
+.no-candidatures-message {
+    text-align: center;
+    padding: 50px 20px;
+    background-color: var(--candidatures-card-bg);
+    border-radius: 12px;
+    box-shadow: var(--candidatures-shadow-light);
+    color: var(--candidatures-text-muted);
+}
+
+/* --- Responsive candidatsOffres --- */
+
+/* Rendre les tableaux scrollables sur petit écran */
+
+/* Responsive pour la liste des candidatures */
+
+@media (max-width: 768px) {
+  .candidatures-header-row,
+  .candidature-item {
+    display: block; /* Passe en bloc vertical */
+    padding: 10px 15px;
+    margin-bottom: 20px;
+    border: 1px solid var(--candidatures-border-color);
+    border-radius: 10px;
+  }
+
+  .candidatures-header-row {
+    display: none; /* Cache l’en-tête des colonnes sur mobile, on va voir autrement */
+  }
+
+  .candidature-item > div {
+    margin-bottom: 8px;
+  }
+
+  .candidate-info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .candidate-photo-wrapper {
+    width: 40px;
+    height: 40px;
+  }
+
+  .candidate-name {
+    font-size: 1rem;
+  }
+
+  .offer-title,
+  .documents-links,
+  .status-cell,
+  .action-cell {
+    font-size: 0.9rem;
+  }
+
+  .documents-links {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .status-select {
+    width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  .d-flex.justify-content-between.align-items-center.mb-4 {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 15px;
+  }
+
+  .page-title {
+    font-size: 1.5rem;
+    margin-bottom: 0;
+  }
+
+  .candidatures-actions {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .candidatures-actions input.search-input {
+    flex: 1 1 100%;
+    max-width: 100%;
+  }
+
+  .candidatures-actions .btn {
+    flex: 1 1 auto;
+    min-width: 120px;
+  }
+}
+
+

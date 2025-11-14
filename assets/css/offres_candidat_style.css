@@ -1,0 +1,206 @@
+/* ==========================================================================
+   Styles pour des cartes d'offres d'emploi compactes et modernes
+   ========================================================================== */
+
+:root {
+    --primary-color: #0d6efd;
+    --success-color: #198754;
+    --danger-color: #dc3545;
+    --secondary-text-color: #6c757d;
+    --card-shadow: 0 4px 8px rgba(0, 0, 0, 0.05); /* Ombre plus subtile */
+}
+
+body {
+    background-color: #F6F6F6; /* Un gris très clair */
+}
+
+/* Titre de la section */
+.section-title {
+    font-size: 2rem; /* Taille de police réduite */
+    font-weight: 700;
+    color: #343a40;
+    position: relative;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1.5rem; /* Marge réduite pour un espacement plus compact */
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px; /* Ligne de séparation plus courte */
+    height: 3px; /* Ligne plus fine */
+    background-color: #0d6efd;
+    border-radius: 50px;
+}
+
+/* Style des cartes d'offres */
+.offre-card {
+    border: 1px solid #e9ecef; /* Ajout d'une bordure très fine pour délimiter les cartes */
+    border-radius: 10px; /* Bords légèrement moins arrondis */
+    transition: transform 0.2s ease, box-shadow 0.2s ease; /* Transitions plus rapides */
+    cursor: pointer;
+    overflow: hidden;
+}
+
+.offre-card:hover {
+    transform: translateY(-3px); /* Effet de soulèvement plus subtil */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1); /* Ombre légèrement plus discrète */
+}
+
+/* Logo de l'entreprise */
+.offre-logo {
+    width: 50px; /* Taille réduite */
+    height: 50px; /* Taille réduite */
+    border: 2px solid #e9ecef; /* Bordure plus fine */
+    box-shadow: 0 0 4px rgba(0, 0, 0, 0.05); /* Ombre plus subtile */
+}
+
+/* Titre de l'offre d'emploi */
+.offre-card .card-title {
+    color: #0d6efd;
+    font-size: 1rem; /* Taille de police réduite */
+    font-weight: bold;
+    margin-bottom: 0.5rem; /* Marge réduite */
+}
+
+/* Description de l'offre */
+.offre-card .offre-description {
+    display: -webkit-box;
+    -webkit-line-clamp: 2; /* Limite la description à 2 lignes */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    min-height: 40px; /* Hauteur minimum réduite */
+    color: #6c757d;
+    font-size: 0.9rem; /* Taille de police réduite */
+}
+
+/* Détails (lieu, type) */
+.offre-details li {
+    margin-bottom: 0.5rem; /* Marge réduite */
+}
+
+.offre-details li i {
+    font-size: 1rem; /* Taille d'icône réduite */
+    min-width: 25px; /* Largeur minimale réduite */
+}
+
+.offre-details li span {
+    font-size: 0.85rem; /* Taille de police réduite */
+    color: #495057;
+    font-weight: 500;
+}
+
+/* Bouton "Postuler" */
+.btn-postuler {
+    background-color: #0d6efd;
+    border: none;
+    border-radius: 20px; /* Bords plus petits */
+    font-weight: bold;
+    padding: 0.5rem 1.25rem; /* Réduction du padding */
+    font-size: 0.9rem; /* Taille de police réduite */
+    transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.btn-postuler:hover {
+    background-color: #0b5ed7;
+    transform: scale(1.01); /* Effet de zoom plus subtil */
+}
+
+/* Style des modales */
+.custom-modal-content {
+    border-radius: 10px; /* Bords moins arrondis */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1); /* Ombre plus subtile */
+}
+
+.custom-modal-header {
+    background-color: #f8f9fa;
+    border-bottom: 1px solid #0d6efd; /* Ligne de séparation plus fine */
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    padding: 1rem 1.5rem; /* Réduction du padding */
+}
+
+.custom-modal-header .modal-title {
+    color: #343a40;
+    font-weight: 600; /* Poids de la police plus léger */
+    font-size: 1.25rem; /* Taille de police plus petite */
+}
+
+.icon-pulse {
+    animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); } /* Pulsation plus subtile */
+    100% { transform: scale(1); }
+}
+
+.custom-modal-body {
+    padding: 1.5rem; /* Réduction du padding */
+    background-color: #ffffff;
+}
+
+.form-group-animated {
+    margin-bottom: 1rem; /* Marge réduite */
+}
+
+.form-group-animated label {
+    font-weight: 500;
+    color: #495057;
+    font-size: 0.9rem; /* Taille de police réduite */
+    margin-bottom: 0.25rem;
+}
+
+.custom-file-input {
+    background-color: #f1f3f5;
+    border: 1px solid #ced4da;
+    border-radius: 6px; /* Bords moins arrondis */
+    padding: 0.5rem 0.75rem; /* Réduction du padding */
+    font-size: 0.9rem; /* Taille de police réduite */
+}
+
+.custom-file-input:focus {
+    border-color: #86b7fe;
+    background-color: #fff;
+    box-shadow: 0 0 0 0.15rem rgba(13, 110, 253, 0.25); /* Ombre plus fine */
+    outline: none;
+}
+
+.custom-modal-footer {
+    background-color: #f8f9fa;
+    border-top: none;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    padding: 1rem 1.5rem; /* Réduction du padding */
+    gap: 0.75rem; /* Espacement réduit entre les boutons */
+}
+
+.custom-btn-secondary {
+    border-radius: 20px;
+    padding: 0.6rem 1.2rem;
+    font-weight: bold;
+    color: #6c757d;
+    border: 1px solid #6c757d; /* Bordure plus fine */
+    transition: all 0.2s ease;
+}
+
+.btn-submit-candidature {
+    background-color: #0d6efd;
+    color: #fff;
+    border: none;
+    border-radius: 20px;
+    padding: 0.6rem 1.2rem;
+    font-weight: bold;
+    font-size: 0.9rem;
+    transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.btn-submit-candidature:hover {
+    background-color: #0b5ed7;
+    transform: translateY(-1px); /* Effet de soulèvement plus subtil */
+}

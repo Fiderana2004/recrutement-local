@@ -1,0 +1,382 @@
+/* ==========================================================================
+   Styles spécifiques à l'interface de connexion (login.css) - AVEC LOGO TEXTUEL
+   ========================================================================== */
+
+/* Variables de couleurs pour la page de connexion */
+:root {
+    --login-primary-accent: #e6960e; /* Votre accent orange/jaune */
+    --login-light-bg: #F6F6F6; /* Fond clair principal */
+    --login-dark-text-primary: #111111; /* Texte très foncé / éléments sombres */
+    --login-dark-text-secondary: #2F2F2F; /* Texte gris foncé / éléments secondaires */
+    --login-medium-grey: #665e5e; /* Gris moyen pour placeholders, icônes */
+    --login-accent-hover: #e0b467; /* Nuance plus foncée de l'accent au survol */
+    --login-link-color: #d4a05f; /* Couleur pour les liens comme "Forgot Password?" */
+    --login-google-blue: #4285F4;
+    --login-facebook-blue: #3b5998;
+    --login-border-light: #e0e0e0; /* Bordure claire pour les inputs sur fond clair */
+}
+
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    font-family: 'Poppins', sans-serif; /* Assurez-vous que Poppins est importé */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--login-light-bg); /* Fond clair pour le body */
+    color: var(--login-dark-text-primary); /* Texte sombre par défaut sur le body */
+}
+
+.login-wrapper {
+    display: flex;
+    width: 900px;
+    height: 550px;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+/* Partie gauche avec le dégradé orange/jaune et les formes */
+.login-left-panel {
+    width: 40%;
+    position: relative;
+    background: linear-gradient(135deg, var(--login-primary-accent) 0%, var(--login-accent-hover) 100%); 
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: var(--login-dark-text-primary); /* Texte sombre sur le dégradé si vous voulez */
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 1.5rem;
+    z-index: 1;
+}
+
+/* Formes abstraites dans le panneau de gauche */
+.login-left-panel::before,
+.login-left-panel::after {
+    content: '';
+    position: absolute;
+    background-color: rgba(17, 17, 17, 0.15);
+    z-index: 0;
+}
+
+.login-left-panel::before {
+    width: 150%;
+    height: 150%;
+    top: -50%;
+    left: -50%;
+    transform: rotate(45deg);
+    clip-path: polygon(0 0, 100% 0, 75% 100%, 25% 100%);
+    opacity: 0.5;
+}
+
+.login-left-panel::after {
+    width: 120%;
+    height: 120%;
+    bottom: -30%;
+    right: -30%;
+    transform: rotate(-30deg);
+    clip-path: polygon(25% 0%, 100% 0%, 75% 100%, 0% 100%);
+    opacity: 0.7;
+}
+
+/* Texte "LOGIN" et "SIGN IN" sur le panneau de gauche */
+.login-left-panel .text-large {
+    font-size: 3rem;
+    margin-bottom: 20px;
+    z-index: 2;
+}
+
+.login-left-panel .text-medium {
+    font-size: 1.8rem;
+    z-index: 2;
+}
+
+/* Partie droite avec le formulaire de connexion */
+.login-right-panel {
+    width: 60%;
+    background-color: #ffffff;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: var(--login-dark-text-primary);
+}
+
+/* ********************************************* */
+/* NOUVEAUX STYLES POUR LE LOGO TEXTUEL "MadaRec" */
+/* ********************************************* */
+.logo-text {
+    font-family: 'Montserrat', sans-serif; /* Une police plus distinctive. Importez-la si nécessaire. */
+    font-size: 3.5rem; /* Grande taille pour un impact */
+    font-weight: 800; /* Ultra gras */
+    margin-bottom: 30px;
+    letter-spacing: -2px; /* Rapproche un peu les lettres */
+    background: linear-gradient(90deg, var(--login-dark-text-primary) 50%, var(--login-primary-accent) 50%);
+    -webkit-background-clip: text; /* Rend le dégradé visible uniquement sur le texte */
+    -webkit-text-fill-color: transparent; /* Rend le texte transparent pour laisser voir le dégradé */
+    /* Pour un effet bicolore sur "MadaRec", où "Mada" est noir et "Rec" est orange */
+}
+
+/* Si vous voulez une autre idée de style : Mada en noir, Rec en orange avec une ombre */
+/*
+.logo-text {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 3.5rem;
+    font-weight: 800;
+    margin-bottom: 30px;
+    letter-spacing: -2px;
+    color: var(--login-dark-text-primary); 
+    position: relative;
+    display: inline-block;
+}
+.logo-text::after {
+    content: 'Rec';
+    position: absolute;
+    right: 0;
+    top: 0;
+    color: var(--login-primary-accent); 
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1); 
+}
+*/
+/* ********************************************* */
+
+
+/* Styles pour les champs d'entrée */
+.login-input-group {
+    position: relative;
+    width: 100%;
+    max-width: 350px;
+    margin-bottom: 25px;
+}
+
+.login-input-group input {
+    width: 100%;
+    padding: 12px 12px 12px 40px;
+    border: none;
+    border-bottom: 1px solid var(--login-border-light);
+    font-size: 1rem;
+    color: var(--login-dark-text-primary);
+    background-color: transparent;
+    transition: border-color 0.3s ease;
+}
+
+.login-input-group input:focus {
+    outline: none;
+    border-color: var(--login-primary-accent);
+}
+
+.login-input-group input::placeholder {
+    color: var(--login-medium-grey);
+}
+
+.login-input-group .input-icon {
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--login-medium-grey);
+    font-size: 1.2rem;
+}
+
+/* Lien "Forgot Password?" */
+.forgot-password {
+    display: block;
+    text-align: right;
+    width: 100%;
+    max-width: 350px;
+    margin-top: -15px;
+    margin-bottom: 30px;
+    font-size: 0.9rem;
+    color: var(--login-link-color);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.forgot-password:hover {
+    color: var(--login-primary-accent);
+}
+
+/* Bouton de connexion */
+.login-button {
+    width: 100%;
+    max-width: 350px;
+    padding: 15px;
+    border: none;
+    border-radius: 8px;
+    background-color: var(--login-dark-text-primary);
+    color: #ffffff;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    margin-bottom: 40px;
+}
+
+.login-button:hover {
+    background-color: var(--login-dark-text-secondary);
+    box-shadow: 0 8px 20px rgba(17, 17, 17, 0.3);
+}
+
+/* Section "Or Login with" */
+.social-login-separator {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    max-width: 350px;
+    margin-bottom: 30px;
+    font-size: 0.9rem;
+    color: var(--login-medium-grey);
+}
+
+.social-login-separator::before,
+.social-login-separator::after {
+    content: '';
+    flex-grow: 1;
+    height: 1px;
+    background-color: var(--login-border-light);
+    margin: 0 10px;
+}
+
+.social-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    width: 100%;
+    max-width: 350px;
+}
+
+.social-button {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 20px;
+    border: 1px solid var(--login-border-light);
+    border-radius: 8px;
+    text-decoration: none;
+    color: var(--login-dark-text-primary);
+    font-weight: 500;
+    font-size: 0.95rem;
+    background-color: #ffffff;
+    transition: all 0.3s ease;
+}
+
+.social-button img {
+    width: 20px;
+    height: 20px;
+    filter: none;
+}
+
+.social-button:hover {
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    transform: translateY(-2px);
+    background-color: #f0f0f0;
+}
+
+.alert {
+    width: 100%;
+    max-width: 350px;
+    margin-bottom: 20px;
+    font-size: 0.9rem;
+    background-color: #fff3cd;
+    color: #664d03;
+    border-color: #ffecb5;
+}
+.alert-danger {
+    background-color: #f8d7da;
+    color: #721c24;
+    border-color: #f5c6cb;
+}
+
+/* Responsive login page */
+@media (max-width: 900px) {
+  .login-wrapper {
+    width: 100%;
+    height: auto;
+    flex-direction: column;
+    border-radius: 0;
+    box-shadow: none;
+    margin: 20px;
+  }
+
+  .login-left-panel,
+  .login-right-panel {
+    width: 100%;
+    padding: 30px 20px;
+    text-align: center;
+  }
+
+  /* Ajuster le texte du panneau gauche */
+  .login-left-panel {
+    font-size: 1.2rem;
+    text-transform: none;
+  }
+  
+  .login-left-panel .text-large {
+    font-size: 2rem;
+    margin-bottom: 15px;
+  }
+
+  .login-left-panel .text-medium {
+    font-size: 1.2rem;
+  }
+
+  /* Logo textuel */
+  .logo-text {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+  }
+
+  /* Inputs et boutons prennent toute la largeur disponible */
+  .login-input-group,
+  .forgot-password,
+  .login-button,
+  .social-login-separator,
+  .social-buttons {
+    max-width: 100%;
+    width: 100%;
+  }
+
+  .social-buttons {
+    justify-content: center;
+    gap: 15px;
+  }
+
+  /* Plus de padding sur le bouton */
+  .login-button {
+    padding: 14px 0;
+  }
+
+  /* Pour éviter l’overflow horizontal */
+  html, body {
+    overflow-x: hidden;
+  }
+}
+
+/* Pour les très petits écrans mobiles */
+@media (max-width: 400px) {
+  .login-left-panel .text-large {
+    font-size: 1.5rem;
+  }
+
+  .login-left-panel .text-medium {
+    font-size: 1rem;
+  }
+
+  .logo-text {
+    font-size: 1.8rem;
+  }
+
+  .login-input-group input {
+    padding-left: 35px;
+  }
+
+  .login-button {
+    font-size: 1rem;
+  }
+}
